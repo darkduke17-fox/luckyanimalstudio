@@ -1,17 +1,18 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import BentoContainer from '../components/BentoContainer.astro';
+import ImageLinkCard from '../components/ImageLinkCard.astro';
+import cardsJson from '../data/cards.json';
+import type { ImageLinkCardData } from '../data/schema';
 
+const cards = [...(cardsJson as ImageLinkCardData[])].sort((a, b) => a.order - b.order);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <div class="guild-section-divider">工作室傳訊</div>
+  <BentoContainer>
+    {cards.map((card) => (
+      <ImageLinkCard id={card.id} {...card.content} size={card.size} />
+    ))}
+  </BentoContainer>
+</Layout>

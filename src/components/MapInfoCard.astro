@@ -1,0 +1,31 @@
+---
+import type { CardSize } from '../data/schema';
+
+interface Props {
+  title: string;
+  address: string;
+  hours: string[];
+  googleMapEmbedUrl: string;
+  navigationUrl: string;
+  size: CardSize;
+}
+
+const { title, address, hours, googleMapEmbedUrl, navigationUrl, size } = Astro.props;
+---
+
+<article id="guild-map" class:list={['bento-card', `${size}-span`, 'map-card']}>
+  <div class="map-copy">
+    <p class="eyebrow">Find the Guild</p>
+    <h2>{title}</h2>
+    <address>{address}</address>
+    <ul aria-label="開放時間">
+      {hours.map((hour) => <li>{hour}</li>)}
+    </ul>
+  </div>
+  <div class="map-frame">
+    <iframe src={googleMapEmbedUrl} title={`${title}地圖`} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <a class="navigation-button" href={navigationUrl} target="_blank" rel="noopener noreferrer">
+    一鍵導航 <span aria-hidden="true">⌖</span>
+  </a>
+</article>

@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = '幸運獸冒險者公會',
+  description = '中古奇幻羊皮紙風格的公會公告、委託與據點資訊。',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1a1412" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="site-logo" href="/" aria-label="回到幸運獸冒險者公會首頁">
+          <img src="/images/logo.png" alt="幸運獸冒險者公會標誌" width="96" height="96" />
+        </a>
+        <div class="site-welcome">
+          <p class="site-kicker">Lucky Animal Studio</p>
+          <h1>歡迎來到吉祥物工作室</h1>
+        </div>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer class="site-footer">
+        <div class="footer-blessing">
+          <span aria-hidden="true">✦</span>
+          祝願每位冒險者都能找到，專屬於自己的道標。
+          <span aria-hidden="true">✦</span>
+        </div>
+        <div class="footer-credits">Designed &amp; Built by AzureBear</div>
+      </footer>
+    </div>
+  </body>
+</html>

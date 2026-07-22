@@ -1,0 +1,39 @@
+---
+import type { CardSize } from '../data/schema';
+import Instagram from './icons/Instagram.astro';
+import Facebook from './icons/Facebook.astro';
+import Line from './icons/Line.astro';
+
+type IconName = 'instagram' | 'facebook' | 'line';
+
+interface Props {
+  id?: string;
+  title: string;
+  imageUrl?: string;
+  iconName?: IconName;
+  linkUrl: string;
+  showRibbon?: boolean;
+  ribbonText?: string;
+  size: CardSize;
+}
+
+const { id, title, imageUrl, iconName, linkUrl, showRibbon = false, ribbonText, size } = Astro.props;
+const iconComponents = {
+  instagram: Instagram,
+  facebook: Facebook,
+  line: Line,
+};
+const Icon = iconName ? iconComponents[iconName] : undefined;
+---
+
+<a
+  id={id}
+  class:list={['bento-card', `${size}-span`, 'image-link-card', { 'has-image': imageUrl, 'has-icon': iconName }]}
+  href={linkUrl}
+>
+  {imageUrl && <img src={imageUrl} alt="" width="600" height="480" loading="lazy" />}
+  {Icon && <Icon class="image-link-icon" />}
+  <span class="image-link-shade" aria-hidden="true"></span>
+  {showRibbon && ribbonText && <span class="ribbon">{ribbonText}</span>}
+  <span class="image-link-title">{title}<span aria-hidden="true"> →</span></span>
+</a>

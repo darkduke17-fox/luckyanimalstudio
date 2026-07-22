@@ -1,0 +1,33 @@
+---
+import type { CardSize, MediaPlatform } from '../data/schema';
+
+interface Props {
+  embedUrl: string;
+  platform: MediaPlatform;
+  size: CardSize;
+}
+
+const { embedUrl, platform, size } = Astro.props;
+const platformLabels: Record<MediaPlatform, string> = {
+  youtube: 'YouTube 影音',
+  spotify: 'Spotify 音訊',
+  podcast: 'Podcast 音訊',
+};
+---
+
+<article class:list={['bento-card', `${size}-span`, 'media-card']}>
+  <h2 class="card-section-title">旅人留聲</h2>
+  <div class:list={['media-frame', `media-${platform}`]}>
+    <i class="rivet rivet-one" aria-hidden="true"></i>
+    <i class="rivet rivet-two" aria-hidden="true"></i>
+    <i class="rivet rivet-three" aria-hidden="true"></i>
+    <i class="rivet rivet-four" aria-hidden="true"></i>
+    <iframe
+      src={embedUrl}
+      title={platformLabels[platform]}
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</article>

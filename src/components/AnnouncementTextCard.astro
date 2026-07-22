@@ -1,0 +1,22 @@
+---
+import type { CardSize } from '../data/schema';
+
+interface Props {
+  title: string;
+  content: string;
+  date?: string;
+  size: CardSize;
+}
+
+const { title, content, date, size } = Astro.props;
+---
+
+<article id="latest-decree" class:list={['bento-card', `${size}-span`, 'announcement-text-card']}>
+  <header>
+    <p class="eyebrow">Guild Decree</p>
+    <h2>{title}</h2>
+    <div class="ink-divider" aria-hidden="true"><span>❦</span></div>
+  </header>
+  <p class="decree-copy">{content}</p>
+  {date && <time datetime={date}>{date.replaceAll('-', ' · ')}</time>}
+</article>

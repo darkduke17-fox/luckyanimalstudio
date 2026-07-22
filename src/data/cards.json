@@ -1,0 +1,58 @@
+[
+  {
+    "id": "link-instagram",
+    "type": "image-link",
+    "size": "half",
+    "order": 1,
+    "content": {
+      "title": "Instagram",
+      "iconName": "instagram",
+      "linkUrl": "https://www.instagram.com/luckyanimalstudio"
+    }
+  },
+  {
+    "id": "link-facebook",
+    "type": "image-link",
+    "size": "half",
+    "order": 2,
+    "content": {
+      "title": "Facebook",
+      "iconName": "facebook",
+      "linkUrl": "https://www.facebook.com/share/19y6y92ej3/"
+    }
+  },
+  {
+    "id": "link-line-mascot",
+    "type": "image-link",
+    "size": "half",
+    "order": 3,
+    "content": {
+      "title": "吉祥物賴服務台",
+      "iconName": "line",
+      "linkUrl": "https://lin.ee/1YFVcKM"
+    }
+  },
+  {
+    "id": "link-line-fortune",
+    "type": "image-link",
+    "size": "half",
+    "order": 4,
+    "content": {
+      "title": "麥奇思老師的命理諮服務台",
+      "iconName": "line",
+      "linkUrl": "https://lin.ee/FQU8goC"
+    }
+  },
+  {
+    "id": "link-card-runes",
+    "type": "image-link",
+    "size": "full",
+    "order": 5,
+    "content": {
+      "title": "盧恩符文索引",
+      "imageUrl": "/images/supplies.jpg",
+      "linkUrl": "/runes",
+      "showRibbon": false
+    }
+  }
+]

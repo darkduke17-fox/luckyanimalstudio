@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import runesJson from '../../data/runes.json';
+import type { RuneData } from '../../data/schema';
+
+export function getStaticPaths() {
+  const runes = runesJson as RuneData[];
+
+  return runes.map((rune) => ({
+    params: { id: rune.id },
+    props: { rune },
+  }));
+}
+
+interface Props {
+  rune: RuneData;
+}
+
+const { rune } = Astro.props;
+---
+
+<Layout title={`${rune.name}｜盧恩符文｜幸運獸工坊`} description={`${rune.name} 盧恩符文，象徵${rune.meaning}。`}>
+  <article class="rune-detail" aria-labelledby="rune-detail-title">
+    <header class="rune-detail-heading parchment-panel">
+      <p class="rune-detail-symbol" aria-hidden="true">{rune.symbol}</p>
+      <div>
+        <p class="eyebrow">Rune Stone</p>
+        <h2 id="rune-detail-title">{rune.name}</h2>
+        <p>{rune.meaning}</p>
+      </div>
+    </header>
+
+    <div class="rune-artwork parchment-panel">
+      <object
+        data={`/images/runes/${rune.id}.png`}
+        type="image/png"
+        aria-label={`${rune.name}（${rune.meaning}）符文解說圖`}
+      >
+        <span class="rune-artwork-fallback" role="img" aria-label={`${rune.name} 符文：${rune.symbol}`}>
+          {rune.symbol}
+        </span>
+      </object>
+    </div>
+
+    <nav class="rune-page-actions" aria-label="頁面導覽">
+      <a class="parchment-button" href="/runes">回到符文索引</a>
+      <a class="parchment-button" href="/">回到首頁</a>
+    </nav>
+  </article>
+</Layout>

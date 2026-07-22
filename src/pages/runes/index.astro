@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import runesJson from '../../data/runes.json';
+import type { RuneData } from '../../data/schema';
+
+const runes = runesJson as RuneData[];
+---
+
+<Layout title="盧恩符文石碑索引｜幸運獸工坊" description="瀏覽二十四枚古弗薩克盧恩與空白符文，探索每一枚符文的象徵。">
+  <section class="rune-page" aria-labelledby="rune-index-title">
+    <header class="rune-intro parchment-panel">
+      <h2 id="rune-index-title">盧恩符文索引</h2>
+      <p>選擇一枚符文，聆聽古老符文的低語。</p>
+    </header>
+
+    <div class="rune-grid" aria-label="二十五枚盧恩符文">
+      {runes.map((rune) => (
+        <a class="rune-stone-card" href={`/runes/${rune.id}`} aria-label={`查看 ${rune.name}，${rune.meaning}`}>
+          <span class="rune-stone-symbol" aria-hidden="true">{rune.symbol}</span>
+          <strong>{rune.name}</strong>
+          <small>{rune.meaning}</small>
+        </a>
+      ))}
+    </div>
+
+    <nav class="rune-page-actions" aria-label="頁面導覽">
+      <a class="parchment-button" href="/">回到首頁</a>
+    </nav>
+  </section>
+</Layout>

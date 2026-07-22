@@ -1,0 +1,19 @@
+---
+import type { CardSize } from '../data/schema';
+
+interface Props {
+  imageUrl: string;
+  alt: string;
+  waxSealLabel?: string;
+  size: CardSize;
+}
+
+const { imageUrl, alt, waxSealLabel, size } = Astro.props;
+---
+
+<article class:list={['bento-card', `${size}-span`, 'announcement-image-card']}>
+  <div class="framed-image">
+    <img src={imageUrl} alt={alt} width="1200" height="800" loading="eager" />
+  </div>
+  {waxSealLabel && <span class="wax-seal" aria-label={`臘封標記：${waxSealLabel}`}>{waxSealLabel}</span>}
+</article>
