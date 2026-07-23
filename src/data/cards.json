@@ -4,6 +4,7 @@
     "type": "image-link",
     "size": "half",
     "order": 1,
+    "section": "messaging",
     "content": {
       "title": "Instagram",
       "iconName": "instagram",
@@ -15,6 +16,7 @@
     "type": "image-link",
     "size": "half",
     "order": 2,
+    "section": "messaging",
     "content": {
       "title": "Facebook",
       "iconName": "facebook",
@@ -26,6 +28,7 @@
     "type": "image-link",
     "size": "half",
     "order": 3,
+    "section": "messaging",
     "content": {
       "title": "吉祥物賴服務台",
       "iconName": "line",
@@ -37,8 +40,9 @@
     "type": "image-link",
     "size": "half",
     "order": 4,
+    "section": "messaging",
     "content": {
-      "title": "麥奇思老師的命理諮服務台",
+      "title": "麥奇思老師命理諮詢",
       "iconName": "line",
       "linkUrl": "https://lin.ee/FQU8goC"
     }
@@ -48,6 +52,7 @@
     "type": "image-link",
     "size": "full",
     "order": 5,
+    "section": "services",
     "content": {
       "title": "盧恩符文索引",
       "imageUrl": "/images/supplies.jpg",

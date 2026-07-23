@@ -4,6 +4,7 @@ export interface BaseCard {
   id: string;
   size: CardSize;
   order: number;
+  section?: 'services' | 'messaging';
 }
 
 export interface AnnouncementImageCardData extends BaseCard {

@@ -5,14 +5,27 @@ import ImageLinkCard from '../components/ImageLinkCard.astro';
 import cardsJson from '../data/cards.json';
 import type { ImageLinkCardData } from '../data/schema';
 
-const cards = [...(cardsJson as ImageLinkCardData[])].sort((a, b) => a.order - b.order);
+const sortedCards = [...(cardsJson as ImageLinkCardData[])].sort((a, b) => a.order - b.order);
+const servicesCards = sortedCards.filter((card) => card.section === 'services');
+const messagingCards = sortedCards.filter((card) => card.section !== 'services');
 ---
 
 <Layout>
+  {servicesCards.length > 0 && (
+    <BentoContainer>
+      {servicesCards.map((card) => (
+        <ImageLinkCard id={card.id} {...card.content} size={card.size} />
+      ))}
+    </BentoContainer>
+  )}
+
   <div class="guild-section-divider">工作室傳訊</div>
-  <BentoContainer>
-    {cards.map((card) => (
-      <ImageLinkCard id={card.id} {...card.content} size={card.size} />
-    ))}
-  </BentoContainer>
+
+  {messagingCards.length > 0 && (
+    <BentoContainer>
+      {messagingCards.map((card) => (
+        <ImageLinkCard id={card.id} {...card.content} size={card.size} />
+      ))}
+    </BentoContainer>
+  )}
 </Layout>
