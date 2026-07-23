@@ -13,9 +13,8 @@ const {
   image = '/images/logo.png',
 } = Astro.props;
 
-const siteUrl = Astro.site ? Astro.site.toString() : 'http://localhost:4321';
-const absoluteImageUrl = new URL(image, siteUrl).toString();
-const absolutePageUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const absoluteImageUrl = new URL(image, Astro.url).toString();
+const absolutePageUrl = Astro.url.href;
 ---
 
 <!doctype html>
