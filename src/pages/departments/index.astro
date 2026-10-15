@@ -1,0 +1,165 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DepartmentHero from '../../components/departments/DepartmentHero.astro';
+import DepartmentTabs from '../../components/departments/DepartmentTabs.astro';
+import DepartmentIntro from '../../components/departments/DepartmentIntro.astro';
+import DepartmentServices from '../../components/departments/DepartmentServices.astro';
+import DepartmentShowcases from '../../components/departments/DepartmentShowcases.astro';
+import DepartmentTeam from '../../components/departments/DepartmentTeam.astro';
+import DepartmentCta from '../../components/departments/DepartmentCta.astro';
+import { departments } from '../../data/departments';
+---
+
+<Layout
+  title="探索我們的服務｜吉祥物工作室"
+  description="認識吉祥物工作室療育部門與命理部門。本頁內容為示範假資料。"
+  hideSiteHeader
+>
+  <div class="department-page" data-department-page>
+    <DepartmentHero />
+    <DepartmentTabs departments={departments} />
+
+    <div class="department-reading-area">
+      <div class="department-prompt" data-department-prompt aria-live="polite">
+        <span aria-hidden="true">✦</span>
+        <h2>請選擇想了解的部門</h2>
+        <p>點選上方頁籤，展開對應的服務介紹。所有內容皆為示範假資料。</p>
+      </div>
+
+      {departments.map((department) => (
+        <section
+          class="department-panel"
+          id={`panel-${department.id}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${department.id}`}
+          data-department-panel={department.id}
+          hidden
+        >
+          <DepartmentIntro department={department} />
+          <DepartmentServices services={department.services} departmentId={department.id} />
+          <DepartmentShowcases showcases={department.showcases} departmentId={department.id} />
+          <DepartmentTeam team={department.team} departmentId={department.id} />
+          <DepartmentCta cta={department.cta} />
+        </section>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    const validDepartmentIds = ['healing', 'divination'];
+    const page = document.querySelector('[data-department-page]');
+
+    if (page instanceof HTMLElement) {
+      const nav = page.querySelector('[data-department-tabs]');
+      const prompt = page.querySelector('[data-department-prompt]');
+      const tabs = Array.from(page.querySelectorAll('[role="tab"]'));
+      const panels = Array.from(page.querySelectorAll('[data-department-panel]'));
+      const navigationTop = nav instanceof HTMLElement
+        ? nav.getBoundingClientRect().top + window.scrollY
+        : 0;
+      let activeId = null;
+
+      const getHashId = () => {
+        const id = window.location.hash.slice(1);
+        return validDepartmentIds.includes(id) ? id : null;
+      };
+
+      const setRovingTabindex = (focusId) => {
+        tabs.forEach((tab, index) => {
+          const id = tab instanceof HTMLElement ? tab.dataset.departmentId : '';
+          tab.setAttribute('tabindex', id === focusId || (!focusId && index === 0) ? '0' : '-1');
+        });
+      };
+
+      const showDepartment = (nextId, source = 'history') => {
+        const previousId = activeId;
+        activeId = nextId;
+
+        tabs.forEach((tab) => {
+          const selected = tab instanceof HTMLElement && tab.dataset.departmentId === nextId;
+          tab.setAttribute('aria-selected', String(selected));
+        });
+        panels.forEach((panel) => {
+          const selected = panel instanceof HTMLElement && panel.dataset.departmentPanel === nextId;
+          panel.toggleAttribute('hidden', !selected);
+        });
+        if (prompt instanceof HTMLElement) prompt.hidden = nextId !== null;
+        setRovingTabindex(nextId);
+
+        if (source === 'click' && nextId && !previousId) {
+          requestAnimationFrame(() => {
+            const panel = page.querySelector(`[data-department-panel="${nextId}"]`);
+            panel?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        } else if (previousId && previousId !== nextId && nav instanceof HTMLElement) {
+          window.scrollTo({ top: navigationTop, behavior: 'auto' });
+        }
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+          if (!(tab instanceof HTMLElement)) return;
+          const id = tab.dataset.departmentId;
+          if (!id || id === activeId) return;
+          window.location.hash = id;
+          showDepartment(id, 'click');
+        });
+
+        tab.addEventListener('keydown', (event) => {
+          if (!(event instanceof KeyboardEvent)) return;
+          let nextIndex = index;
+          if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % tabs.length;
+          else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + tabs.length) % tabs.length;
+          else if (event.key === 'Home') nextIndex = 0;
+          else if (event.key === 'End') nextIndex = tabs.length - 1;
+          else return;
+          event.preventDefault();
+          const nextTab = tabs[nextIndex];
+          if (nextTab instanceof HTMLElement) {
+            setRovingTabindex(nextTab.dataset.departmentId ?? null);
+            nextTab.focus();
+          }
+        });
+      });
+
+      window.addEventListener('hashchange', () => showDepartment(getHashId()));
+      showDepartment(getHashId());
+    }
+  </script>
+</Layout>
+
+<style is:global>
+  .page-shell:has(.department-page) { padding: 0; }
+  .page-shell:has(.department-page) > main { width: 100%; }
+  .page-shell:has(.department-page) .site-footer { padding: 28px 16px 24px; }
+</style>
+
+<style>
+  .department-page { width: 100%; min-width: 0; overflow: clip; }
+  .department-reading-area { display: flow-root; min-height: 340px; padding-bottom: 36px; background-color: var(--color-parchment-base); background-image: var(--parchment-texture), linear-gradient(135deg, #f8f0d8, #e3d3aa); background-blend-mode: multiply; border-top: 1px solid #d1b976; }
+  .department-prompt { max-width: 760px; margin: 0 auto; padding: 70px 20px 90px; text-align: center; }
+  .department-prompt > span { color: var(--color-wax-seal); font-size: 1.6rem; }
+  .department-prompt h2 { margin: 9px 0 7px; font-size: clamp(1.35rem, 6vw, 2rem); letter-spacing: .08em; }
+  .department-prompt p { max-width: 30rem; margin: 0 auto; color: var(--color-text-secondary); font-size: .9rem; line-height: 1.75; }
+  .department-panel { max-width: 760px; margin: 0 auto; scroll-margin-top: 80px; }
+  .department-panel[hidden], .department-prompt[hidden] { display: none; }
+  @media (min-width: 768px) {
+    .department-reading-area {
+      max-width: 680px;
+      margin: 20px auto 48px;
+      border: 2px solid var(--color-ink-border);
+      border-radius: 12px;
+      box-shadow: var(--parchment-shadow);
+      overflow: hidden;
+    }
+    .department-panel {
+      max-width: none;
+      margin: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: visible;
+    }
+  }
+</style>

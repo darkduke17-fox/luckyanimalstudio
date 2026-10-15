@@ -1,0 +1,18 @@
+---
+import type { DepartmentData } from '../../data/schema';
+interface Props { cta?: DepartmentData['cta']; }
+const { cta } = Astro.props;
+---
+
+{cta && <aside class="department-cta">
+  {cta.title && <h3>{cta.title}</h3>}
+  {cta.note && <p>{cta.note}</p>}
+  <a href={cta.buttonUrl}>{cta.buttonText}<span aria-hidden="true"> →</span></a>
+</aside>}
+
+<style>
+  .department-cta { margin: 16px 16px 0; padding: 24px 18px; color: #f0e3c2; background: #33231a; border: 1px solid var(--color-metal-accent); border-radius: 7px; text-align: center; }
+  h3 { margin: 0; font-size: 1.25rem; } p { max-width: 32rem; margin: 8px auto 18px; color: #ccb98e; font-size: .84rem; line-height: 1.7; }
+  a { display: inline-block; min-height: 44px; padding: 11px 18px; color: var(--color-text-primary); background: var(--color-parchment-base); border-radius: 4px; font-weight: 700; text-decoration: none; }
+  @media (min-width: 620px) { .department-cta { margin-inline: 32px; } }
+</style>

@@ -1,0 +1,25 @@
+---
+import type { DepartmentService } from '../../data/schema';
+interface Props { services?: DepartmentService[]; departmentId: string; }
+const { services = [], departmentId } = Astro.props;
+---
+
+{services.length > 0 && <section class="department-section" aria-labelledby={`${departmentId}-services-title`}>
+  <div class="section-heading"><span aria-hidden="true">✦</span><div><p>What we offer</p><h3 id={`${departmentId}-services-title`}>服務項目</h3></div></div>
+  <div class="service-grid">
+    {services.map((service, index) => <article><span class="service-index">{String(index + 1).padStart(2, '0')}</span><h4>{service.title}</h4><p>{service.description}</p>{service.tags && <ul aria-label="服務標籤">{service.tags.map((tag) => <li>{tag}</li>)}</ul>}</article>)}
+  </div>
+</section>}
+
+<style>
+  .department-section { padding: 28px 16px; border-top: 1px solid #7f624244; }
+  .section-heading { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; color: var(--color-wax-seal); }
+  .section-heading > span { font-size: 1.4rem; } .section-heading p { margin: 0; font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+  h3 { margin: 1px 0 0; color: var(--color-text-primary); font-size: 1.45rem; letter-spacing: .12em; }
+  .service-grid { display: grid; gap: 12px; }
+  article { position: relative; padding: 18px 16px; background: #fff9e6aa; border: 1px solid #8b6a4777; border-radius: 6px; box-shadow: 0 3px 10px #4d32141a; overflow: hidden; }
+  .service-index { position: absolute; right: 11px; top: 4px; color: #8b1e0f19; font-size: 2.5rem; font-weight: 900; }
+  h4 { position: relative; margin: 0 0 7px; font-size: 1.05rem; } article p { margin: 0; color: var(--color-text-secondary); font-size: .88rem; line-height: 1.7; }
+  ul { display: flex; gap: 6px; margin: 12px 0 0; padding: 0; flex-wrap: wrap; list-style: none; } li { padding: 3px 8px; color: #62452f; border: 1px solid #8b6a4755; border-radius: 999px; font-size: .67rem; }
+  @media (min-width: 620px) { .department-section { padding: 38px 32px; } .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

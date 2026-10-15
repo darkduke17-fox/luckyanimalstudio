@@ -84,3 +84,46 @@ export interface RuneData {
   name: string;
   meaning: string;
 }
+
+export interface DepartmentService {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl?: string;
+  tags?: string[];
+}
+
+export interface DepartmentShowcase {
+  id: string;
+  title: string;
+  description?: string;
+  images: string[];
+  date?: string;
+}
+
+export interface DepartmentMember {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  avatarUrl?: string;
+  specialties?: string[];
+}
+
+export interface DepartmentData {
+  id: 'healing' | 'divination';
+  name: string;
+  subtitle: string;
+  philosophy: string;
+  description: string;
+  heroImage?: string;
+  services?: DepartmentService[];
+  showcases?: DepartmentShowcase[];
+  team?: DepartmentMember[];
+  cta?: {
+    title?: string;
+    note?: string;
+    buttonText: string;
+    buttonUrl: string;
+  };
+}

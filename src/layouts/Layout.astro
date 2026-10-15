@@ -5,12 +5,14 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  hideSiteHeader?: boolean;
 }
 
 const {
   title = '吉祥物工作室',
   description = '親愛的冒險者您好，歡迎來到吉祥物工作室，一間存在於現實夾縫中的小小道具屋～提供天然水晶、奧剛工藝、命理占卜與薩滿療癒服務。',
   image = '/images/OG-LOGO.jpg',
+  hideSiteHeader = false,
 } = Astro.props;
 
 const absoluteImageUrl = new URL(image, Astro.url).toString();
@@ -40,7 +42,7 @@ const absolutePageUrl = Astro.url.href;
   </head>
   <body>
     <div class="page-shell">
-      <header class="site-header">
+      {!hideSiteHeader && <header class="site-header">
         <a class="site-logo" href="/" aria-label="回到幸運獸冒險者公會首頁">
           <img src="/images/logo.png" alt="幸運獸冒險者公會標誌" width="96" height="96" />
         </a>
@@ -48,7 +50,7 @@ const absolutePageUrl = Astro.url.href;
           <p class="site-kicker">Lucky Animal Studio</p>
           <h1>歡迎來到吉祥物工作室</h1>
         </div>
-      </header>
+      </header>}
       <main>
         <slot />
       </main>

@@ -1,0 +1,28 @@
+---
+import type { DepartmentMember } from '../../data/schema';
+interface Props { team?: DepartmentMember[]; departmentId: string; }
+const { team = [], departmentId } = Astro.props;
+---
+
+{team.length > 0 && <section class="department-section" aria-labelledby={`${departmentId}-team-title`}>
+  <div class="section-heading"><span aria-hidden="true">✧</span><div><p>Companions</p><h3 id={`${departmentId}-team-title`}>同行夥伴</h3></div></div>
+  <div class="team-grid">
+    {team.map((member) => <article>
+      <div class="member-mark" aria-hidden="true">{member.name.replace(/（.*$/, '').trim().slice(0, 1)}</div>
+      <div><h4>{member.name}</h4><p class="role">{member.role}</p><p>{member.bio}</p>{member.specialties && <ul aria-label="夥伴專長">{member.specialties.map((item) => <li>{item}</li>)}</ul>}</div>
+    </article>)}
+  </div>
+</section>}
+
+<style>
+  .department-section { padding: 28px 16px; border-top: 1px solid #7f624244; }
+  .section-heading { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; color: var(--color-wax-seal); }
+  .section-heading > span { font-size: 1.5rem; } .section-heading p { margin: 0; font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+  h3 { margin: 1px 0 0; color: var(--color-text-primary); font-size: 1.45rem; letter-spacing: .12em; }
+  .team-grid { display: grid; gap: 12px; }
+  article { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 14px; padding: 16px; background: #fff9e677; border: 1px solid #8b6a4755; border-radius: 6px; }
+  .member-mark { display: grid; width: 54px; aspect-ratio: 1; place-items: center; color: #f3e5be; background: #513522; border: 2px solid var(--color-metal-accent); border-radius: 50%; font-size: 1.4rem; font-weight: 900; }
+  h4 { margin: 0; font-size: 1rem; } .role { margin: 2px 0 8px; color: var(--color-wax-seal); font-size: .73rem; font-weight: 700; } article div > p:last-of-type { margin: 0; color: var(--color-text-secondary); font-size: .82rem; line-height: 1.6; }
+  ul { display: flex; gap: 6px; margin: 9px 0 0; padding: 0; flex-wrap: wrap; list-style: none; } li { font-size: .65rem; color: #6c5138; }
+  @media (min-width: 620px) { .department-section { padding: 38px 32px; } .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

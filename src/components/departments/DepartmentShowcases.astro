@@ -1,0 +1,28 @@
+---
+import type { DepartmentShowcase } from '../../data/schema';
+interface Props { showcases?: DepartmentShowcase[]; departmentId: string; }
+const { showcases = [], departmentId } = Astro.props;
+---
+
+{showcases.length > 0 && <section class="department-section" aria-labelledby={`${departmentId}-showcases-title`}>
+  <div class="section-heading"><span aria-hidden="true">◆</span><div><p>Field notes</p><h3 id={`${departmentId}-showcases-title`}>作品與活動紀錄</h3></div></div>
+  <div class="showcase-grid">
+    {showcases.map((showcase) => <article>
+      {showcase.images[0] && <img src={showcase.images[0]} alt={`${showcase.title}示意圖`} width="640" height="426" loading="lazy" decoding="async" />}
+      <div class="showcase-copy">{showcase.date && <p class="date">{showcase.date}</p>}<h4>{showcase.title}</h4>{showcase.description && <p>{showcase.description}</p>}</div>
+    </article>)}
+  </div>
+</section>}
+
+<style>
+  .department-section { padding: 28px 16px; border-top: 1px solid #7f624244; }
+  .section-heading { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; color: var(--color-wax-seal); }
+  .section-heading > span { font-size: 1.25rem; } .section-heading p { margin: 0; font-size: .58rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+  h3 { margin: 1px 0 0; color: var(--color-text-primary); font-size: 1.45rem; letter-spacing: .12em; }
+  .showcase-grid { display: grid; gap: 14px; }
+  article { background: #fff9e6aa; border: 1px solid #8b6a4777; border-radius: 6px; box-shadow: 0 3px 10px #4d32141a; overflow: hidden; }
+  img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; filter: sepia(.22) saturate(.82); }
+  .showcase-copy { padding: 15px; } .date { margin: 0 0 4px; color: var(--color-wax-seal); font-size: .67rem; font-weight: 700; letter-spacing: .08em; }
+  h4 { margin: 0 0 6px; font-size: 1rem; } .showcase-copy > p:last-child { margin: 0; color: var(--color-text-secondary); font-size: .84rem; line-height: 1.65; }
+  @media (min-width: 620px) { .department-section { padding: 38px 32px; } .showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>

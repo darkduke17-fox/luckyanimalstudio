@@ -1,0 +1,22 @@
+---
+import type { DepartmentData } from '../../data/schema';
+interface Props { department: DepartmentData; }
+const { department } = Astro.props;
+---
+
+<section class="department-intro" aria-labelledby={`${department.id}-title`}>
+  <p class="section-label">Department profile</p>
+  <h2 id={`${department.id}-title`}>{department.name}</h2>
+  <p class="subtitle">{department.subtitle}</p>
+  <blockquote>{department.philosophy}</blockquote>
+  <p class="description">{department.description}</p>
+</section>
+
+<style>
+  .department-intro { padding: 30px 20px; text-align: center; }
+  .section-label { margin: 0; color: var(--color-wax-seal); font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+  h2 { margin: 7px 0 2px; font-size: clamp(1.8rem, 8vw, 3rem); letter-spacing: .12em; }
+  .subtitle { margin: 0; color: var(--color-text-secondary); font-weight: 700; }
+  blockquote { max-width: 35rem; margin: 22px auto; padding: 12px 18px; border-block: 1px solid #b8975388; color: #563c27; font-size: clamp(1.05rem, 4.6vw, 1.35rem); font-weight: 700; line-height: 1.65; }
+  .description { max-width: 40rem; margin: 0 auto; line-height: 1.9; text-align: left; }
+</style>
