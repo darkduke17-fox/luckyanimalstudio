@@ -1,0 +1,76 @@
+---
+import type { ConsultationGuide } from '../../data/schema';
+interface Props { guide: ConsultationGuide; }
+const { guide } = Astro.props;
+---
+
+<div class="consultation-guide">
+  <header class="guide-intro">
+    <div class="brand-header">
+      <p class="section-label">Divination</p>
+      <h2>{guide.brandTitle}</h2>
+    </div>
+    <div class="guide-lead-box">
+      <h3 class="guide-subtitle"><span aria-hidden="true">✦</span>{guide.title}</h3>
+      <p class="guide-description">{guide.introduction}</p>
+    </div>
+  </header>
+
+  <section aria-labelledby="divination-services-title">
+    <h3 id="divination-services-title">{guide.servicesTitle}</h3>
+    <div class="service-list">
+      {guide.services.map((service) => (
+        <article>
+          <h4>{service.title}</h4>
+          <p>{service.description}</p>
+          <ul class="service-details">
+            {service.details.map((detail) => <li>{detail}</li>)}
+            {service.preparation && (
+              <li>
+                <strong>{service.preparation.title}</strong>
+                <ul>{service.preparation.items.map((item) => <li>{item}</li>)}</ul>
+              </li>
+            )}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section aria-labelledby="divination-hours-title">
+    <h3 id="divination-hours-title">{guide.hoursTitle}</h3>
+    <ul>{guide.hours.map((item) => <li>{item}</li>)}</ul>
+  </section>
+
+  <section aria-labelledby="divination-booking-title">
+    <h3 id="divination-booking-title">{guide.bookingTitle}</h3>
+    <p>{guide.bookingIntroduction}</p>
+    <ul>{guide.bookingRules.map((rule) => <li>{rule}</li>)}</ul>
+  </section>
+</div>
+
+<style>
+  .consultation-guide { padding: 30px 20px 8px; color: var(--color-text-primary); line-height: 1.9; overflow-wrap: anywhere; }
+  .guide-intro { padding-bottom: 28px; }
+  .brand-header { text-align: center; padding-bottom: 22px; margin-bottom: 24px; border-bottom: 1px solid #b8975388; }
+  .section-label { margin: 0; color: var(--color-wax-seal); font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+  h2 { margin: 7px 0 0; font-size: clamp(1.85rem, 8vw, 2.8rem); font-weight: 900; letter-spacing: .12em; line-height: 1.35; }
+  .guide-lead-box { max-width: 40rem; margin: 0 auto; text-align: left; }
+  .guide-subtitle { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; padding-left: 10px; border-left: 4px solid var(--color-wax-seal); color: var(--color-wax-seal); font-size: clamp(1.35rem, 5.2vw, 1.65rem); font-weight: 900; letter-spacing: .06em; line-height: 1.4; }
+  .guide-subtitle > span { flex-shrink: 0; }
+  .guide-description { margin: 0; color: var(--color-text-secondary); font-size: 1rem; font-weight: 400; line-height: 1.85; }
+  h3 { margin: 0 0 18px; font-size: clamp(1.2rem, 4.8vw, 1.5rem); line-height: 1.6; }
+  h4 { margin: 0 0 12px; color: var(--color-wax-seal); font-size: 1.12rem; line-height: 1.7; }
+  p { margin: 0 0 16px; }
+  section { padding: 28px 0; border-top: 1px solid #7f624244; }
+  .service-list { display: grid; gap: 20px; }
+  article { min-width: 0; padding: 20px 16px; background: #fff9e6aa; border: 1px solid #8b6a4777; border-radius: 6px; box-shadow: 0 3px 10px #4d32141a; }
+  ul { margin: 0; padding-left: 1.4em; }
+  li + li { margin-top: 10px; }
+  li > ul { margin-top: 10px; }
+  .service-details > li:first-child { font-weight: 700; }
+  @media (min-width: 620px) {
+    .consultation-guide { padding: 38px 32px 8px; }
+    article { padding: 24px; }
+  }
+</style>

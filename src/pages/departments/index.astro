@@ -7,12 +7,13 @@ import DepartmentServices from '../../components/departments/DepartmentServices.
 import DepartmentShowcases from '../../components/departments/DepartmentShowcases.astro';
 import DepartmentTeam from '../../components/departments/DepartmentTeam.astro';
 import DepartmentCta from '../../components/departments/DepartmentCta.astro';
+import DepartmentConsultationGuide from '../../components/departments/DepartmentConsultationGuide.astro';
 import { departments } from '../../data/departments';
 ---
 
 <Layout
   title="探索我們的服務｜吉祥物工作室"
-  description="認識吉祥物工作室療育部門與命理部門。本頁內容為示範假資料。"
+  description="認識吉祥物工作室療育部門與命理部門。提供命理諮詢服務項目與預約指南。"
   hideSiteHeader
 >
   <div class="department-page" data-department-page>
@@ -23,7 +24,7 @@ import { departments } from '../../data/departments';
       <div class="department-prompt" data-department-prompt aria-live="polite">
         <span aria-hidden="true">✦</span>
         <h2>請選擇想了解的部門</h2>
-        <p>點選上方頁籤，展開對應的服務介紹。所有內容皆為示範假資料。</p>
+        <p>點選上方頁籤，展開對應的服務介紹。命理部門提供諮詢服務與預約資訊。</p>
       </div>
 
       {departments.map((department) => (
@@ -35,11 +36,17 @@ import { departments } from '../../data/departments';
           data-department-panel={department.id}
           hidden
         >
-          <DepartmentIntro department={department} />
-          <DepartmentServices services={department.services} departmentId={department.id} />
-          <DepartmentShowcases showcases={department.showcases} departmentId={department.id} />
-          <DepartmentTeam team={department.team} departmentId={department.id} />
-          <DepartmentCta cta={department.cta} />
+          {department.consultationGuide ? (
+            <DepartmentConsultationGuide guide={department.consultationGuide} />
+          ) : (
+            <>
+              <DepartmentIntro department={department} />
+              <DepartmentServices services={department.services} departmentId={department.id} />
+              <DepartmentShowcases showcases={department.showcases} departmentId={department.id} />
+              <DepartmentTeam team={department.team} departmentId={department.id} />
+              <DepartmentCta cta={department.cta} />
+            </>
+          )}
         </section>
       ))}
     </div>

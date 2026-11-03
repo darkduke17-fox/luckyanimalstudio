@@ -110,12 +110,31 @@ export interface DepartmentMember {
   specialties?: string[];
 }
 
+export interface ConsultationGuide {
+  brandTitle: string;
+  title: string;
+  introduction: string;
+  servicesTitle: string;
+  services: Array<{
+    title: string;
+    description: string;
+    details: string[];
+    preparation?: { title: string; items: string[] };
+  }>;
+  hoursTitle: string;
+  hours: string[];
+  bookingTitle: string;
+  bookingIntroduction: string;
+  bookingRules: string[];
+}
+
 export interface DepartmentData {
   id: 'healing' | 'divination';
   name: string;
-  subtitle: string;
-  philosophy: string;
-  description: string;
+  subtitle?: string;
+  philosophy?: string;
+  description?: string;
+  consultationGuide?: ConsultationGuide;
   heroImage?: string;
   services?: DepartmentService[];
   showcases?: DepartmentShowcase[];
