@@ -1,18 +1,36 @@
 ---
 import type { DepartmentData } from '../../data/schema';
+import Line from '../icons/Line.astro';
 interface Props { cta?: DepartmentData['cta']; }
 const { cta } = Astro.props;
+const isExternal = cta?.buttonUrl.startsWith('http');
 ---
 
-{cta && <aside class="department-cta">
-  {cta.title && <h3>{cta.title}</h3>}
-  {cta.note && <p>{cta.note}</p>}
-  <a href={cta.buttonUrl}>{cta.buttonText}<span aria-hidden="true"> →</span></a>
+{cta && <aside class="department-cta" aria-label="部門導覽與預約連結">
+  <div class="cta-actions">
+    <a class="cta-secondary" href="/">
+      <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M3 10.5 12 3l9 7.5" />
+        <path d="M5.5 9.5V20h13V9.5" />
+        <path d="M9.5 20v-5.5h5V20" />
+      </svg>
+      <span>回到工作室首頁</span>
+    </a>
+    <a class="cta-primary" href={cta.buttonUrl} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener noreferrer' : undefined}>
+      <Line class="cta-icon" />
+      <span>{cta.buttonText}</span>
+    </a>
+  </div>
 </aside>}
 
 <style>
-  .department-cta { margin: 16px 16px 0; padding: 24px 18px; color: #f0e3c2; background: #33231a; border: 1px solid var(--color-metal-accent); border-radius: 7px; text-align: center; }
-  h3 { margin: 0; font-size: 1.25rem; } p { max-width: 32rem; margin: 8px auto 18px; color: #ccb98e; font-size: .84rem; line-height: 1.7; }
-  a { display: inline-block; min-height: 44px; padding: 11px 18px; color: var(--color-text-primary); background: var(--color-parchment-base); border-radius: 4px; font-weight: 700; text-decoration: none; }
-  @media (min-width: 620px) { .department-cta { margin-inline: 32px; } }
+  .department-cta { margin: 16px 16px 0; padding: 18px 16px; color: #f0e3c2; background: #33231a; border: 1px solid var(--color-metal-accent); border-radius: 7px; text-align: center; }
+  .cta-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 440px; margin: 0 auto; }
+  .cta-primary, .cta-secondary { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; min-width: 0; min-height: 78px; padding: 12px 8px; border-radius: 6px; font-weight: 700; font-size: clamp(.78rem, 3.2vw, .9rem); line-height: 1.3; text-decoration: none; transition: transform 160ms ease, background 160ms ease, border-color 160ms ease; }
+  .cta-actions :global(.cta-icon) { width: 28px; height: 28px; flex: 0 0 auto; }
+  .cta-primary { color: var(--color-text-primary); background: var(--color-parchment-base); border: 1px solid var(--color-parchment-base); }
+  .cta-secondary { color: #e7d7ae; background: transparent; border: 1px solid var(--color-metal-accent); }
+  .cta-primary:hover, .cta-secondary:hover { transform: translateY(-2px); }
+  .cta-secondary:hover { background: #463327; border-color: var(--color-metal-light); }
+  @media (min-width: 620px) { .department-cta { margin-inline: 32px; padding: 20px; } }
 </style>

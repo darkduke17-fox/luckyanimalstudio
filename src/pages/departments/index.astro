@@ -44,12 +44,21 @@ import { departments } from '../../data/departments';
               <DepartmentServices services={department.services} departmentId={department.id} />
               <DepartmentShowcases showcases={department.showcases} departmentId={department.id} />
               <DepartmentTeam team={department.team} departmentId={department.id} />
-              <DepartmentCta cta={department.cta} />
             </>
           )}
+          <DepartmentCta cta={department.cta} />
         </section>
       ))}
     </div>
+    <button
+      type="button"
+      class="back-to-top"
+      aria-label="回到頁面頂端"
+      data-back-to-top
+      hidden
+    >
+      <span aria-hidden="true">↑</span>
+    </button>
   </div>
 
   <script>
@@ -131,6 +140,18 @@ import { departments } from '../../data/departments';
 
       window.addEventListener('hashchange', () => showDepartment(getHashId()));
       showDepartment(getHashId());
+
+      const backToTopButton = page.querySelector('[data-back-to-top]');
+      if (backToTopButton instanceof HTMLButtonElement) {
+        const toggleBackToTop = () => {
+          backToTopButton.hidden = window.scrollY <= 280;
+        };
+        backToTopButton.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        window.addEventListener('scroll', toggleBackToTop, { passive: true });
+        toggleBackToTop();
+      }
     }
   </script>
 </Layout>
@@ -150,6 +171,10 @@ import { departments } from '../../data/departments';
   .department-prompt p { max-width: 30rem; margin: 0 auto; color: var(--color-text-secondary); font-size: .9rem; line-height: 1.75; }
   .department-panel { max-width: 760px; margin: 0 auto; scroll-margin-top: 80px; }
   .department-panel[hidden], .department-prompt[hidden] { display: none; }
+  .back-to-top { position: fixed; right: 18px; bottom: 22px; z-index: 90; display: grid; place-items: center; width: 46px; height: 46px; padding: 0; color: #f1e5c7; background: #2d2019ee; border: 1.5px solid var(--color-metal-accent); border-radius: 50%; box-shadow: 0 6px 16px #08050399; font: 900 1.2rem/1 var(--font-family); cursor: pointer; transition: transform 160ms ease, background 160ms ease, border-color 160ms ease; }
+  .back-to-top:hover { transform: translateY(-2px); background: #3f2d23; border-color: var(--color-metal-light); }
+  .back-to-top:focus-visible { outline: 3px solid var(--color-metal-light); outline-offset: 2px; }
+  .back-to-top[hidden] { display: none; }
   @media (min-width: 768px) {
     .department-reading-area {
       max-width: 680px;

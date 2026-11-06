@@ -131,6 +131,7 @@ export interface ConsultationGuide {
 export interface DepartmentData {
   id: 'healing' | 'divination';
   name: string;
+  brandTitle?: string;
   subtitle?: string;
   philosophy?: string;
   description?: string;

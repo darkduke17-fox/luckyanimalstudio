@@ -1,41 +1,36 @@
 import type { DepartmentData } from './schema';
 
-const demo = '（示範假資料）';
-
 export const departments: DepartmentData[] = [
   {
     id: 'healing',
     name: '療育部門',
-    subtitle: `與身心重新連線 ${demo}`,
-    philosophy: `讓每一次停留，都成為聽見自己的練習 ${demo}`,
-    description: `以自然素材、靜心儀式與溫柔陪伴，設計能安心探索內在的體驗。以下內容皆為版面展示用途，並非正式療程或專業聲明。${demo}`,
+    brandTitle: '宸祈薩滿造物所',
+    description: '「宸祈薩滿造物所」所提供的服務主要是以薩滿祈福包為主，祈福包用來對於自然萬物的祈福，能量清理為主，或是給予往生者送行，讓能量在震盪中，更好的回到平靜和諧的狀態。',
     services: [
-      ['healing-01', '晶石靜心小聚', '透過呼吸、書寫與晶石觀察，練習安定當下。', ['靜心', '小班']],
-      ['healing-02', '森林感官散步', '在安全路線中練習放慢腳步，重新覺察五感。', ['戶外', '覺察']],
-      ['healing-03', '聲音放鬆時光', '以柔和聲響營造休息空間，陪伴身心沉澱。', ['聲音', '放鬆']],
-      ['healing-04', '香氣記憶書寫', '從氣味聯想出發，記錄感受與生活片段。', ['香氣', '書寫']],
-      ['healing-05', '手作護身小物', '運用天然素材完成一件具有個人寓意的小作品。', ['手作', '自然素材']],
-      ['healing-06', '季節祝福儀式', '依季節主題設計團體儀式，為生活建立溫柔節點。', ['季節', '團體']],
-    ].map(([id, title, description, tags]) => ({ id: id as string, title: `${title} ${demo}`, description: `${description} ${demo}`, tags: tags as string[] })),
-    showcases: Array.from({ length: 8 }, (_, index) => ({
-      id: `healing-showcase-${index + 1}`,
-      title: `療育活動紀錄 ${String(index + 1).padStart(2, '0')} ${demo}`,
-      description: `呈現活動氣氛與流程的版面示意，人物與情境皆非真實案例。${demo}`,
-      images: ['/images/supplies.jpg'],
-      date: `示範日期 2026.${String(index + 1).padStart(2, '0')}`,
-    })),
-    team: Array.from({ length: 5 }, (_, index) => ({
-      id: `healing-member-${index + 1}`,
-      name: `療育夥伴 ${index + 1} ${demo}`,
-      role: `體驗引導員 ${demo}`,
-      bio: `此人物、經歷與職稱僅供版面展示，不代表真實團隊成員或專業資格。${demo}`,
-      specialties: ['安心陪伴', '活動設計'].map((item) => `${item} ${demo}`),
-    })),
+      {
+        id: 'healing-01',
+        title: '1.大地媽媽祈福包(1200/次)：',
+        description: '最常使用的祈福包，除了敬謝大地之外，有時可以做為情緒安撫的選擇。',
+      },
+      {
+        id: 'healing-02',
+        title: '2.和諧祈福包(1600/次)：',
+        description: '讓身體的能量穩定回平和狀態',
+      },
+      {
+        id: 'healing-03',
+        title: '3.亡者祈福包(3000/次)：',
+        description: '清理過世親人身體的能量，讓其最後一段路可以走得更安心，更穩妥!',
+      },
+      {
+        id: 'healing-04',
+        title: '4.節氣團體祈福包(168/次)：',
+        description: '目前以四大節氣為主(春分、夏至、秋分、冬至)，會在節氣當天進行祈福。',
+      },
+    ],
     cta: {
-      title: `想了解療育部門？${demo}`,
-      note: `目前為頁面示意，正式服務與聯絡方式將另行公告。${demo}`,
-      buttonText: '回到工作室首頁',
-      buttonUrl: '/',
+      buttonText: '前往官方 LINE 諮詢',
+      buttonUrl: 'https://page.line.me/922zvnnl',
     },
   },
   {
@@ -96,6 +91,10 @@ export const departments: DepartmentData[] = [
         "取消與改期規範：如需取消或更改時間，請務必於「三天前」提前告知。",
         "退費手續費：因故需辦理取消退費者，將酌收 $15 匯款手續費。"
       ]
+    },
+    cta: {
+      buttonText: '前往官方 LINE 諮詢',
+      buttonUrl: 'https://lin.ee/FQU8goC',
     },
   },
 ];

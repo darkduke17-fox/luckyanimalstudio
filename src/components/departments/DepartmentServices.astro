@@ -2,12 +2,13 @@
 import type { DepartmentService } from '../../data/schema';
 interface Props { services?: DepartmentService[]; departmentId: string; }
 const { services = [], departmentId } = Astro.props;
+const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 ---
 
 {services.length > 0 && <section class="department-section" aria-labelledby={`${departmentId}-services-title`}>
   <div class="section-heading"><span aria-hidden="true">✦</span><div><p>What we offer</p><h3 id={`${departmentId}-services-title`}>服務項目</h3></div></div>
   <div class="service-grid">
-    {services.map((service, index) => <article><span class="service-index">{String(index + 1).padStart(2, '0')}</span><h4>{service.title}</h4><p>{service.description}</p>{service.tags && <ul aria-label="服務標籤">{service.tags.map((tag) => <li>{tag}</li>)}</ul>}</article>)}
+    {services.map((service, index) => <article><span class="service-index">{romanNumerals[index] ?? String(index + 1)}</span><h4>{service.title}</h4><p>{service.description}</p>{service.tags && <ul aria-label="服務標籤">{service.tags.map((tag) => <li>{tag}</li>)}</ul>}</article>)}
   </div>
 </section>}
 
