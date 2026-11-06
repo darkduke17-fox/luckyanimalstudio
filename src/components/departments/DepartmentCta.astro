@@ -21,6 +21,11 @@ const isExternal = cta?.buttonUrl.startsWith('http');
       <span>{cta.buttonText}</span>
     </a>
   </div>
+  <div class="cta-notice-return">
+    <a href="/departments/" class="notice-return-link" data-return-notice>
+      <span aria-hidden="true">✦</span> 預約前請詳閱「療癒與命理服務注意事項」
+    </a>
+  </div>
 </aside>}
 
 <style>
@@ -32,5 +37,8 @@ const isExternal = cta?.buttonUrl.startsWith('http');
   .cta-secondary { color: #e7d7ae; background: transparent; border: 1px solid var(--color-metal-accent); }
   .cta-primary:hover, .cta-secondary:hover { transform: translateY(-2px); }
   .cta-secondary:hover { background: #463327; border-color: var(--color-metal-light); }
+  .cta-notice-return { margin-top: 14px; padding-top: 10px; border-top: 1px dashed rgba(184, 151, 83, 0.35); text-align: center; }
+  .notice-return-link { display: inline-flex; align-items: center; gap: 6px; color: #d2c19a; font-size: clamp(.76rem, 2.8vw, .84rem); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(210, 193, 154, 0.4); transition: color 160ms ease, text-decoration-color 160ms ease; }
+  .notice-return-link:hover { color: var(--color-metal-light); text-decoration-color: var(--color-metal-light); }
   @media (min-width: 620px) { .department-cta { margin-inline: 32px; padding: 20px; } }
 </style>

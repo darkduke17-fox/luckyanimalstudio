@@ -22,9 +22,128 @@ import { departments } from '../../data/departments';
 
     <div class="department-reading-area">
       <div class="department-prompt" data-department-prompt aria-live="polite">
-        <span aria-hidden="true">✦</span>
-        <h2>請選擇想了解的部門</h2>
-        <p>點選上方頁籤，展開對應的服務介紹。命理部門提供諮詢服務與預約資訊。</p>
+        <header class="prompt-header">
+          <span class="prompt-seal" aria-hidden="true">✦</span>
+          <h2>療癒與命理服務注意事項</h2>
+        </header>
+
+        <div class="notice-body">
+          <section class="notice-intro">
+            <p>在展開一段探索自我、整理內在與尋找方向的旅程之前，邀請您先閱讀以下服務說明。</p>
+            <p>我們相信，每個人都擁有理解自己、做出選擇與調整生活的能力。</p>
+            <p>工作室提供的療癒與命理服務，旨在透過不同的靈性實踐、象徵解讀及對話方式，陪伴來訪者探索自身狀態，提供另一種自我覺察與思考的視角。</p>
+            <p>為保障雙方權益，並維護安全、尊重與信任的服務環境，請於預約前詳閱以下事項。</p>
+          </section>
+
+          <section class="notice-section">
+            <h3>一、服務性質與非醫療行為聲明</h3>
+            <ol>
+              <li>本工作室提供之薩滿療癒、能量工作、SRT、牌卡占算及其他靈性相關服務，屬於個人靈性探索、自我覺察與身心放鬆等非醫療性質活動。</li>
+              <li>所有服務均不屬於醫療診斷、疾病治療、心理治療、心理諮商或其他依法應由專業醫事人員執行之行為。</li>
+              <li>服務過程中的感受、象徵意涵、能量觀點及相關解讀，屬於特定靈性實踐或信念體系下的詮釋，不代表經科學驗證的醫療結論。</li>
+              <li>本工作室不保證任何疾病、身體症狀、心理困擾或生活問題能透過服務獲得改善或解決。</li>
+              <li>若您有身體不適、精神健康困擾或其他健康疑慮，應優先尋求合格醫療專業人員協助。請勿因參與本服務而自行停止、減少或更改原有的治療、藥物或醫療安排。</li>
+            </ol>
+            <p class="notice-callout">靈性服務可以作為個人探索與支持的方式，但不能取代必要的專業醫療照護。</p>
+          </section>
+
+          <section class="notice-section">
+            <h3>二、服務前的個人身心狀態</h3>
+            <p class="section-lead">為了讓服務過程更加安全、舒適，請留意以下事項：</p>
+            <ol>
+              <li>建議在意識清楚、精神狀態相對穩定，且能自主表達意願的情況下參與服務。</li>
+              <li>若正處於嚴重情緒危機、急性身心症狀、酒精或藥物影響下，或其他難以維持清楚判斷的狀態，建議暫緩預約，必要時優先尋求專業協助。</li>
+              <li>若服務包含冥想、呼吸練習、聲音引導、煙燻、香草或其他可能影響個人舒適度的活動，請事先告知相關過敏、呼吸道敏感、懷孕或其他需要調整活動方式的情況。您不必提供完整病史。</li>
+              <li>服務期間如出現頭暈、身體不適、明顯情緒壓力或其他不舒服的感受，請立即告知服務人員。</li>
+              <li>您可以隨時要求暫停、調整或終止活動，無須勉強自己完成整個流程。</li>
+            </ol>
+            <p class="notice-callout">工作室得依現場狀況及安全考量，建議延期、調整服務內容或停止服務。</p>
+          </section>
+
+          <section class="notice-section">
+            <h3>三、關於靈性體驗與個人感受</h3>
+            <p class="section-lead">每個人的生活經驗、文化背景、信念與感受方式皆不相同，因此對靈性服務的理解與體驗也可能有所差異。</p>
+            <ol>
+              <li>服務中可能使用能量、靈性象徵、牌卡或其他相關概念進行交流，來訪者可以依自身信念自由理解，不需要接受所有詮釋。</li>
+              <li>服務過程中出現的情緒、身體感受、意象或其他主觀經驗，均不應直接視為疾病診斷、超自然現象的客觀證明或特定結果已經發生的證據。</li>
+              <li>每次服務的感受可能不同，沒有特定反應不代表服務失敗，也無須刻意追求某種體驗。</li>
+              <li>工作室不會要求來訪者改變宗教信仰，也不會以恐懼、災厄、因果報應或其他負面預言，要求購買商品或增加服務次數。</li>
+            </ol>
+            <p class="notice-callout">所有體驗都應建立在尊重、知情、自願與個人自主的基礎上。</p>
+          </section>
+
+          <section class="notice-section">
+            <h3>四、命理占算與決策自主權</h3>
+            <p class="section-lead">牌卡占算及其他命理服務，主要提供象徵性的解讀、觀點與思考方向，不應被視為對未來事件的確定預測。</p>
+            <ol>
+              <li>占算結果不保證特定事件發生，也不代表人生發展只有單一可能。</li>
+              <li>涉及健康、財務投資、法律訴訟、重大感情關係、職涯發展及其他重要決策時，請綜合現實資訊與相關專業意見審慎判斷。</li>
+              <li>工作室不提供醫療診斷、法律裁定、投資保證、賭博結果預測或其他超出服務專業範圍的承諾。</li>
+              <li>不以占算結果要求來訪者採取違反法律、傷害自己或他人、侵犯第三人隱私與權益的行為。</li>
+              <li>對於涉及他人隱私、非自願控制他人意志或其他不適當的提問，服務人員得婉拒解讀或建議調整問題方向。</li>
+            </ol>
+            <p class="notice-callout">人生的選擇權，始終屬於您自己。</p>
+          </section>
+
+          <section class="notice-section">
+            <h3>五、隱私保護與服務界線</h3>
+            <p class="section-lead">我們重視每位來訪者所分享的經驗與信任。</p>
+            <ol>
+              <li>服務過程中所分享的個人故事、情緒感受及其他隱私資訊，工作室將以尊重與保密為原則處理。</li>
+              <li>除依法應提供、為防止重大急迫危害而有必要，或取得本人適當授權等情況外，不會任意向無關第三人揭露個人資訊。</li>
+              <li>未經事先告知及適當同意，不會擅自錄音、錄影，或將可識別個人身分的服務內容用於公開宣傳。</li>
+              <li>若服務涉及肢體接觸、特殊儀式、煙燻或其他個人敏感界線，將事先說明並徵得同意。來訪者有權拒絕或要求更改進行方式。</li>
+              <li>來訪者不需要為了完成服務，而被迫揭露不願談論的私人經歷。</li>
+              <li>工作室僅於預約、聯繫、提供服務與必要行政管理的範圍內處理相關個人資料，詳細內容依另行公告之隱私權政策辦理。</li>
+            </ol>
+          </section>
+
+          <section class="notice-section">
+            <h3>六、彼此尊重與安全原則</h3>
+            <p class="section-lead">我們希望每次交流，都能建立在平等與尊重的關係上。</p>
+            <ol>
+              <li>來訪者有權提出疑問、表達不同意見或拒絕不適合自己的引導方式。</li>
+              <li>服務人員不會以靈性權威、命運預言或其他方式強迫來訪者接受特定信念與決策。</li>
+              <li>雙方均應尊重彼此的人身安全、身體自主權、隱私與合理界線。</li>
+              <li>如發生騷擾、威脅、歧視、侵害個人界線或其他不適當行為，工作室得立即中止服務，並視情況採取必要措施。</li>
+              <li>若來訪者的需求超出本工作室可提供的服務範圍，我們將誠實說明，必要時建議尋求其他適當的專業資源。</li>
+            </ol>
+          </section>
+
+          <section class="notice-section">
+            <h3>七、預約、延期與取消</h3>
+            <ol>
+              <li>各項服務內容、時間、費用及進行方式，以預約時公告或雙方確認之資訊為準。</li>
+              <li>若有遲到、無法出席或需要更改預約時間的情況，請儘早聯繫工作室。</li>
+              <li>若因健康狀況、環境因素或其他安全考量而不適合進行服務，工作室得與來訪者協調改期或取消。</li>
+              <li>付款、取消、改期及退款方式，依預約前明確告知的服務規則及適用法令辦理。</li>
+              <li>任何新增服務、額外費用或商品購買，均須經來訪者知情並自主同意，不會以療癒需求為由強制加購。</li>
+            </ol>
+          </section>
+
+          <section class="notice-section">
+            <h3>八、服務前的理解與同意</h3>
+            <p class="section-lead">當您選擇預約本工作室的療癒或命理服務，即表示您已獲得閱讀及理解相關服務說明的機會，並知悉：</p>
+            <ul class="notice-checklist">
+              <li>本服務屬於非醫療性質的靈性探索與個人支持活動。</li>
+              <li>相關體驗與解讀具有主觀性，不保證特定成效或結果。</li>
+              <li>您有權保留個人信念、提出疑問、拒絕特定活動及要求停止服務。</li>
+              <li>您仍保有對自身健康、生活及重大決策的完整自主權。</li>
+              <li>如有需要，應尋求合格醫療、心理、法律或其他專業人員的協助。</li>
+            </ul>
+          </section>
+
+          <hr class="notice-divider" />
+
+          <blockquote class="notice-traveler">
+            <div class="traveler-header">給每一位來訪的旅人</div>
+            <p>療癒不是要求你成為另一個人，而是提供一個重新認識自己的機會。</p>
+            <p>我們不承諾奇蹟，也不替你決定命運。</p>
+            <p>願每一段相遇，都能在尊重與自由的前提下，成為你理解自己的一種契機。</p>
+            <div class="traveler-signature">吉祥物工作室 Lucky Animal Studio</div>
+            <p class="traveler-blessing">願你帶著自己的意志，走向心之所向。</p>
+          </blockquote>
+        </div>
       </div>
 
       {departments.map((department) => (
@@ -102,8 +221,11 @@ import { departments } from '../../data/departments';
         if (prompt instanceof HTMLElement) prompt.hidden = nextId !== null;
         setRovingTabindex(nextId);
 
-        if (source === 'click' && nextId && !previousId) {
+        if (source === 'click' && nextId === null && previousId && nav instanceof HTMLElement) {
+          window.scrollTo({ top: navigationTop, behavior: 'smooth' });
+        } else if (source === 'click' && nextId && !previousId) {
           requestAnimationFrame(() => {
+            if (activeId !== nextId) return;
             const panel = page.querySelector(`[data-department-panel="${nextId}"]`);
             panel?.scrollIntoView({ behavior: 'smooth', block: 'start' });
           });
@@ -112,11 +234,22 @@ import { departments } from '../../data/departments';
         }
       };
 
+      const returnToNotice = () => {
+        if (window.location.hash) {
+          history.pushState(history.state, '', window.location.pathname + window.location.search);
+        }
+        showDepartment(null, 'click');
+      };
+
       tabs.forEach((tab, index) => {
         tab.addEventListener('click', () => {
           if (!(tab instanceof HTMLElement)) return;
           const id = tab.dataset.departmentId;
-          if (!id || id === activeId) return;
+          if (!id) return;
+          if (id === activeId) {
+            returnToNotice();
+            return;
+          }
           window.location.hash = id;
           showDepartment(id, 'click');
         });
@@ -135,6 +268,14 @@ import { departments } from '../../data/departments';
             setRovingTabindex(nextTab.dataset.departmentId ?? null);
             nextTab.focus();
           }
+        });
+      });
+
+      page.querySelectorAll('[data-return-notice]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          returnToNotice();
+          if (tabs[0] instanceof HTMLElement) tabs[0].focus({ preventScroll: true });
         });
       });
 
@@ -168,10 +309,21 @@ import { departments } from '../../data/departments';
 <style>
   .department-page { width: 100%; min-width: 0; overflow: clip; }
   .department-reading-area { display: flow-root; min-height: 340px; padding-bottom: 36px; background-color: var(--color-parchment-base); background-image: var(--parchment-texture), linear-gradient(135deg, #f8f0d8, #e3d3aa); background-blend-mode: multiply; border-top: 1px solid #d1b976; }
-  .department-prompt { max-width: 760px; margin: 0 auto; padding: 70px 20px 90px; text-align: center; }
-  .department-prompt > span { color: var(--color-wax-seal); font-size: 1.6rem; }
-  .department-prompt h2 { margin: 9px 0 7px; font-size: clamp(1.35rem, 6vw, 2rem); letter-spacing: .08em; }
-  .department-prompt p { max-width: 30rem; margin: 0 auto; color: var(--color-text-secondary); font-size: .9rem; line-height: 1.75; }
+  .department-prompt { max-width: 44rem; margin: 0 auto; padding: 48px 18px 64px; text-align: left; color: var(--color-text-primary); }
+  .prompt-header { text-align: center; margin-bottom: 28px; }
+  .prompt-seal { color: var(--color-wax-seal); font-size: 1.6rem; }
+  .prompt-header h2 { font-size: clamp(1.4rem, 6vw, 2rem); letter-spacing: .08em; margin: 8px 0; color: var(--color-wax-seal); }
+  .notice-section { margin-top: 28px; padding-top: 20px; border-top: 1px solid #7f624233; }
+  .notice-section h3 { font-size: clamp(1.08rem, 4.2vw, 1.3rem); color: var(--color-wax-seal); margin: 0 0 10px; font-weight: 700; letter-spacing: .05em; }
+  .notice-body p { font-size: clamp(.88rem, 3vw, .95rem); line-height: 1.85; margin: 0 0 10px; color: var(--color-text-primary); }
+  .notice-section ol, .notice-section ul { margin: 0 0 12px; padding-left: 1.4em; }
+  .notice-section li { font-size: clamp(.86rem, 2.8vw, .93rem); line-height: 1.8; margin-bottom: 8px; color: var(--color-text-primary); }
+  .notice-body .notice-callout { font-weight: 700; color: #513522; margin-top: 10px; padding: 8px 12px; background: rgba(184, 151, 83, 0.12); border-left: 3px solid var(--color-metal-accent); border-radius: 3px; }
+  .notice-divider { border: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--color-metal-accent), transparent); margin: 32px 0; }
+  .notice-traveler { margin: 0 auto; padding: 20px 18px; background: rgba(255, 249, 230, 0.7); border: 1px solid #8b6a4766; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(77, 50, 20, 0.08); }
+  .traveler-header { font-size: 1.05rem; font-weight: 700; color: var(--color-wax-seal); margin-bottom: 12px; letter-spacing: .1em; }
+  .traveler-signature { font-size: .85rem; font-weight: 700; color: var(--color-text-secondary); margin-top: 16px; }
+  .notice-body .traveler-blessing { font-size: .92rem; font-weight: 700; color: var(--color-wax-seal); margin: 6px 0 0; }
   .department-panel { max-width: 760px; margin: 0 auto; scroll-margin-top: 80px; }
   .department-panel[hidden], .department-prompt[hidden] { display: none; }
   .back-to-top { position: fixed; right: 18px; bottom: 22px; z-index: 90; display: grid; place-items: center; width: 46px; height: 46px; padding: 0; color: #f1e5c7; background: #2d2019ee; border: 1.5px solid var(--color-metal-accent); border-radius: 50%; box-shadow: 0 6px 16px #08050399; font: 900 1.2rem/1 var(--font-family); cursor: pointer; transition: transform 160ms ease, background 160ms ease, border-color 160ms ease; }

@@ -3,7 +3,7 @@ import type { DepartmentData } from './schema';
 export const departments: DepartmentData[] = [
   {
     id: 'healing',
-    name: '療育部門',
+    name: '療癒部門',
     brandTitle: '宸祈薩滿造物所',
     description: '「宸祈薩滿造物所」所提供的服務主要是以薩滿祈福包為主，祈福包用來對於自然萬物的祈福，能量清理為主，或是給予往生者送行，讓能量在震盪中，更好的回到平靜和諧的狀態。',
     services: [
@@ -29,13 +29,14 @@ export const departments: DepartmentData[] = [
       },
     ],
     cta: {
-      buttonText: '前往官方 LINE 諮詢',
+      buttonText: '宸祈造物所 LINE',
       buttonUrl: 'https://page.line.me/922zvnnl',
     },
   },
   {
     id: 'divination',
     name: '命理部門',
+    brandTitle: '麥奇思命理',
     consultationGuide: {
       "brandTitle": "麥奇思命理",
       "title": "諮詢服務項目與預約指南",
@@ -93,7 +94,7 @@ export const departments: DepartmentData[] = [
       ]
     },
     cta: {
-      buttonText: '前往官方 LINE 諮詢',
+      buttonText: '麥奇思命理 LINE',
       buttonUrl: 'https://lin.ee/FQU8goC',
     },
   },
