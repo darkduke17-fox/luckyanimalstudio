@@ -168,6 +168,19 @@ a:focus-visible {
   letter-spacing: 0.09em;
 }
 
+.footer-credits a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(234, 220, 184, 0.35);
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.footer-credits a:hover {
+  color: var(--color-metal-light);
+  text-decoration-color: var(--color-metal-light);
+}
+
 .guild-section-divider {
   display: flex;
   align-items: center;
