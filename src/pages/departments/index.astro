@@ -196,6 +196,8 @@ import { departments } from '../../data/departments';
 
       const getHashId = () => {
         const id = window.location.hash.slice(1);
+        const target = document.getElementById(id);
+        if (target?.closest('#panel-divination .consultation-guide')) return 'divination';
         return validDepartmentIds.includes(id) ? id : null;
       };
 
@@ -279,8 +281,15 @@ import { departments } from '../../data/departments';
         });
       });
 
-      window.addEventListener('hashchange', () => showDepartment(getHashId()));
-      showDepartment(getHashId());
+      const syncHash = () => {
+        showDepartment(getHashId());
+        const target = document.getElementById(window.location.hash.slice(1));
+        if (target?.closest('#panel-divination .consultation-guide')) {
+          requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+        }
+      };
+      window.addEventListener('hashchange', syncHash);
+      syncHash();
 
       const backToTopButton = page.querySelector('[data-back-to-top]');
       if (backToTopButton instanceof HTMLButtonElement) {

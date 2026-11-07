@@ -112,6 +112,16 @@ export interface DepartmentMember {
 
 export interface ConsultationGuide {
   brandTitle: string;
+  profile: {
+    name: string;
+    imageUrl: string;
+    tagline: string;
+    paragraphs: string[];
+  };
+  expertise: Array<{ title: string; items: string[] }>;
+  certifications: string[];
+  experience: string[];
+  studies: Array<{ title: string; description: string }>;
   title: string;
   introduction: string;
   servicesTitle: string;
