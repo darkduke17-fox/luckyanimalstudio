@@ -3,8 +3,9 @@ import type { CardSize } from '../data/schema';
 import Instagram from './icons/Instagram.astro';
 import Facebook from './icons/Facebook.astro';
 import Line from './icons/Line.astro';
+import Lantern from './icons/Lantern.astro';
 
-type IconName = 'instagram' | 'facebook' | 'line';
+type IconName = 'instagram' | 'facebook' | 'line' | 'lantern';
 
 interface Props {
   id?: string;
@@ -22,6 +23,7 @@ const iconComponents = {
   instagram: Instagram,
   facebook: Facebook,
   line: Line,
+  lantern: Lantern,
 };
 const Icon = iconName ? iconComponents[iconName] : undefined;
 ---

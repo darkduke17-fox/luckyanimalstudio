@@ -30,7 +30,7 @@ export interface ImageLinkCardData extends BaseCard {
   content: {
     title: string;
     imageUrl?: string;
-    iconName?: 'instagram' | 'facebook' | 'line';
+    iconName?: 'instagram' | 'facebook' | 'line' | 'lantern';
     linkUrl: string;
     showRibbon?: boolean;
     ribbonText?: string;

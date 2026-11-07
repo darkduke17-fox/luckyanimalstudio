@@ -36,15 +36,15 @@
     }
   },
   {
-    "id": "link-line-fortune",
+    "id": "link-card-departments",
     "type": "image-link",
     "size": "half",
     "order": 4,
     "section": "messaging",
     "content": {
-      "title": "麥奇思老師命理諮詢",
-      "iconName": "line",
-      "linkUrl": "https://lin.ee/FQU8goC"
+      "title": "療癒與命理",
+      "iconName": "lantern",
+      "linkUrl": "/departments/"
     }
   },
   {
